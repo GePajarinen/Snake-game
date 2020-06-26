@@ -25,4 +25,14 @@ function startTheGame(){
     BackGround();
     createSnake();
 
+    let snakeX = snakebody[0].x;
+    let snakeY = snakebody[0].y;
+
+    //Giving the orientations:
+    if (direction == "right") snakeX +=box;
+    if (direction == "left") snakeX -=box;
+    if (direction == " up") snakeY -=box;
+    if (direction == "down") snakeY +=box;
 }
+
+let game = setInterval(startTheGame, 100);
