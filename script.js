@@ -4,6 +4,11 @@ let box = 32;
 let snakebody = [];
 let direction = "right";
 
+let apple = {
+    x: Math.floor(Math.random() * 15 + 1) * box, //Porque 15+1  e nao 16??
+    y: Math.floor(Math.random() * 15 + 1) * box
+}
+
 snakebody[0]={
     x: 8* box,
     y: 8* box
@@ -19,6 +24,11 @@ function createSnake(){
         context.fillStyle = "green";
         context.fillRect(snakebody[i].x, snakebody[i].y, box, box);
     }
+}
+
+function appleSnack(){
+    context.fillStyle = "red";
+    context.fillRect(apple.x, apple.y, box, box)
 }
 
 //Detect from the keyboard:
@@ -51,7 +61,7 @@ function startTheGame(){
     //Giving the orientations:
     if (direction == "right") snakeX +=box;
     if (direction == "left") snakeX -=box;
-    if (direction == " up") snakeY -=box;
+    if (direction == "up") snakeY -=box;
     if (direction == "down") snakeY +=box;
 
     //Delete the last box of the Snake body:
