@@ -21,6 +21,19 @@ function createSnake(){
     }
 }
 
+//Detect from the keyboard:
+document.addEventListener('keydown', commandsKeyboard);
+
+function commandsKeyboard (event){
+    // Ex. "> && direction != "right" < " then it won't allow the snake go backwards. 
+    if (event.keyCode == 37 && direction != "right") direction = "left";
+    if (event.keyCode == 38 && direction != "down") direction = "up";
+    if (event.keyCode == 39 && direction != "left") direction = "right";
+    if (event.keyCode == 40 && direction != "up") direction = "down";
+
+}
+
+
 function startTheGame(){
     BackGround();
     createSnake();
@@ -33,6 +46,18 @@ function startTheGame(){
     if (direction == "left") snakeX -=box;
     if (direction == " up") snakeY -=box;
     if (direction == "down") snakeY +=box;
+
+    //Delete the last box of the Snake body:
+    snakebody.pop();
+
+    //The Snake head:
+    let head = {
+        x: snakeX,
+        y: snakeY
+    }
+
+    //Turn the head always to the first position:
+    snakebody.unshift(head);
 }
 
 let game = setInterval(startTheGame, 100);
