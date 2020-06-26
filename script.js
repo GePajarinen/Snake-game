@@ -40,9 +40,7 @@ function commandsKeyboard (event){
     if (event.keyCode == 38 && direction != "down") direction = "up";
     if (event.keyCode == 39 && direction != "left") direction = "right";
     if (event.keyCode == 40 && direction != "up") direction = "down";
-
 }
-
 
 function startTheGame(){
 
@@ -52,8 +50,16 @@ function startTheGame(){
     if (snakebody[0].y > 15 * box && direction == "down") snakebody[0].y = 0;
     if (snakebody[0].y < 0 && direction == "up") snakebody[0].y = 16 * box;
 
+    for (i=1; i < snakebody.length; i++){
+        if (snakebody[0].x == snakebody[i].x && snakebody[0].y == snakebody[i].y){
+            clearInterval(game);
+            alert('Game Over :(');
+        }
+    }
+
     BackGround();
     createSnake();
+    appleSnack();
 
     let snakeX = snakebody[0].x;
     let snakeY = snakebody[0].y;
@@ -64,8 +70,12 @@ function startTheGame(){
     if (direction == "up") snakeY -=box;
     if (direction == "down") snakeY +=box;
 
-    //Delete the last box of the Snake body:
-    snakebody.pop();
+    if (snakeX != apple.x || snakeY != appple.y){
+        snakebody.pop();
+    }
+    else{ apple.x = Math.floor(Math.random() * 15 + 1) * box;
+        apple.y = Math.floor(Math.random() * 15 + 1) * box;
+    }
 
     //The Snake head:
     let head = {
