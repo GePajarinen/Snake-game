@@ -35,6 +35,13 @@ function commandsKeyboard (event){
 
 
 function startTheGame(){
+
+    //Treating the edges:
+    if (snakebody[0].x > 15 * box && direction == "right") snakebody[0].x = 0;
+    if (snakebody[0].x < 0 && direction == "left") snakebody[0].x = 16 * box;
+    if (snakebody[0].y > 15 * box && direction == "down") snakebody[0].y = 0;
+    if (snakebody[0].y < 0 && direction == "up") snakebody[0].y = 16 * box;
+
     BackGround();
     createSnake();
 
