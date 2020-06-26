@@ -73,7 +73,7 @@ function startTheGame(){
     if (snakeX != apple.x || snakeY != appple.y){
         snakebody.pop();
     }
-    else{ apple.x = Math.floor(Math.random() * 15 + 1) * box;
+    else { apple.x = Math.floor(Math.random() * 15 + 1) * box;
         apple.y = Math.floor(Math.random() * 15 + 1) * box;
     }
 
