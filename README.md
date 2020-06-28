@@ -1,4 +1,4 @@
 # Snake-game
-The Snake game with JavaScript
+Recreating the Snake game with JavaScript
 
 In progress...
